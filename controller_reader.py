@@ -12,14 +12,17 @@ class LeftStickXReader:
         self.joystick.init()
         print(f"Initialized controller: {self.joystick.get_name()}")
 
+
     def get_left_stick_x(self):
         pygame.event.pump()  # Updates joystick events
         x_axis = self.joystick.get_axis(0)  # Axis 0 is typically left stick X
         return min(1,max(-1,x_axis))
     
+
     def get_left_stick_angle(self):
         value = self.get_left_stick_x()
         return value * 90
+
 
     def close(self):
         pygame.joystick.quit()
